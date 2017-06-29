@@ -25,6 +25,7 @@ int main(int argc, char **argv) {
     DIR *dirp;  
     struct dirent *direntp;  
     int stats;  
+    int i = 0;
     char buf[80];  
     if (argc != 2) {  
         printf("Usage：%s filename\n\a", argv[0]);  
@@ -38,7 +39,9 @@ int main(int argc, char **argv) {
     }  
     while ((direntp = readdir(dirp)) != NULL){  
         sprintf(buf,"%s/%s",argv[1],direntp->d_name);  
-        if (get_file_size_time(buf) == -1)break;  
+	printf("buf[%d] = %s\n", i, buf);
+	i++;
+        //if (get_file_size_time(buf) == -1)break;  
     }  
     closedir(dirp);  
     exit(1);  
